@@ -1,0 +1,74 @@
+{% load bootstrap3 %}
+
+<!DOCTYPE html>
+<html lang="pt">
+
+	<head>
+
+	    <meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <meta name="description" content="">
+	    <meta name="author" content="">
+	    <!-- atualiza a página a cada 60 segundos-->
+	    <meta http-equiv="refresh" content="60" >
+
+	    <title>Yahoo Finance</title>
+
+	   {% bootstrap_css %}
+	   {% bootstrap_javascript %}
+
+	</head>
+
+	<body>
+
+	    <div id="wrapper">
+	    {% block content %}
+
+	        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+
+	            <div class="navbar-header">
+	                <a class="navbar-brand">Yahoo Finance</a>
+	            </div>
+	            
+	        </nav>
+
+	        <div id="page-wrapper">
+
+	            <div class="container-fluid">
+	                
+	                <div class="row">
+	                    <div class="col-lg-6">
+	                        <h2>Yahoo Shares</h2>
+	                        <div class="table-responsive">
+	                            <table class="table table-bordered table-hover">
+	                                <thead>
+	                                    <tr>
+	                                        <th>Ação</th>
+	                                        <th>Informação obtida em</th>
+	                                        <th>Cotação atual</th>
+	                                        <th>Horário da Atualização</th>
+	                                    </tr>
+	                                </thead>
+	                                <tbody>
+	                                    {% for share in shares %}
+	                                    	<tr>
+	                                    		<td>{{share.name}}</td>
+	                                    		<td>{{share.date}}</td>
+	                                    		<td>{{share.quote}}</td>
+	                                    		<td>{{share.update_time}}</td>
+	                                    	</tr>
+	                                    {% endfor %}
+	                                </tbody>
+	                            </table>
+	                        </div>
+	                    </div>
+	                </div>
+
+	            </div>
+	        </div>
+
+	    {% endblock content %}
+	    </div>
+	</body>
+</html>
